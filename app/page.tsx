@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import Features from "@/components/Features";
+import NetflixShowcase from "@/components/NetflixShowcase";
 import Story from "@/components/Story";
 import Tutorial from "@/components/Tutorial";
 import FAQ from "@/components/FAQ";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <HowItWorks />
       <Features />
+      <NetflixShowcase />
       <Story />
       <Tutorial />
       <FAQ />

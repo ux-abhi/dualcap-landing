@@ -2,6 +2,7 @@ import Image from "next/image";
 
 const PLATFORMS = ["Netflix", "YouTube", "Disney+", "Prime Video", "Hulu", "Max", "Mubi", "Crunchyroll"];
 
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-20 px-6 text-center overflow-hidden">
@@ -55,22 +56,23 @@ export default function Hero() {
           Free forever · Requires a free Groq API key · No account needed
         </p>
 
-        {/* Hero screenshot / mockup */}
-        <div className="mt-16 relative mx-auto max-w-3xl">
-          <div
-            className="img-placeholder rounded-2xl overflow-hidden"
-            style={{ height: 420, border: "1.5px dashed rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}
-          >
-            {/* Placeholder — replace with actual screenshot */}
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <polyline points="21 15 16 10 5 21" />
-            </svg>
-            <span style={{ color: "rgba(255,255,255,0.18)", fontSize: 13 }}>Hero screenshot — drop image here</span>
+        {/* Hero screenshot */}
+        <div className="mt-16 relative mx-auto max-w-5xl">
+          {/* Glow behind image */}
+          <div style={{ position: "absolute", inset: "-20px 0", background: "radial-gradient(ellipse at 50% 60%, rgba(99,102,241,0.18) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
+          <div className="relative z-10 rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)" }}>
+            <Image
+              src="/screenshot-hero.png"
+              alt="DualCap showing bilingual captions and grammar breakdown on a video"
+              width={1667}
+              height={943}
+              priority
+              className="w-full h-auto block"
+              style={{ display: "block" }}
+            />
           </div>
           {/* Glow under screenshot */}
-          <div style={{ position: "absolute", bottom: -40, left: "50%", transform: "translateX(-50%)", width: "70%", height: 80, background: "rgba(99,102,241,0.15)", filter: "blur(40px)", borderRadius: "50%", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: -50, left: "50%", transform: "translateX(-50%)", width: "60%", height: 80, background: "rgba(99,102,241,0.18)", filter: "blur(50px)", borderRadius: "50%", pointerEvents: "none" }} />
         </div>
 
         {/* Platform chips */}

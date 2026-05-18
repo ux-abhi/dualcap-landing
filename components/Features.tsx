@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const FEATURES = [
   {
     title: "Bilingual captions, live",
@@ -139,20 +141,31 @@ export default function Features() {
                 </span>
               </div>
 
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.48)" }}>{f.body}</p>
+              {i !== 0 && <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.48)" }}>{f.body}</p>}
 
-              {/* Image placeholder */}
+              {/* Extension UI screenshot in the wide bilingual-captions card */}
               {i === 0 && (
-                <div
-                  className="img-placeholder mt-2 rounded-xl"
-                  style={{ height: 260, border: "1.5px dashed rgba(255,255,255,0.08)" }}
-                >
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <polyline points="21 15 16 10 5 21" />
-                  </svg>
-                  <span style={{ fontSize: 12, color: "rgba(255,255,255,0.15)" }}>{f.imgHint}</span>
+                <div className="mt-2 grid md:grid-cols-2 gap-6 items-center">
+                  <p className="text-sm leading-relaxed md:hidden" style={{ color: "rgba(255,255,255,0.48)" }}>{f.body}</p>
+                  <div className="relative rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}>
+                    <Image
+                      src="/screenshot-ui.png"
+                      alt="DualCap extension panel showing bilingual captions"
+                      width={1024}
+                      height={1536}
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                  <div className="hidden md:flex flex-col gap-4">
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.48)" }}>{f.body}</p>
+                    <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
+                      {["Draggable & resizable overlay", "Works in fullscreen", "Under 100ms translation", "Save any caption instantly"].map((item) => (
+                        <li key={item} className="flex items-center gap-2">
+                          <span style={{ color: "#818cf8" }}>✓</span> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               )}
             </div>
