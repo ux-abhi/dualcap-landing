@@ -226,3 +226,28 @@ details .faq-body {
   font-size: 13px;
 }
 
+/* ── Responsive tweaks ── */
+@media (max-width: 640px) {
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+  .section-label {
+    font-size: 10px;
+  }
+  .platform-chip {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  /* FAQ padding tighter on mobile */
+  details summary {
+    padding: 16px 18px;
+  }
+  .faq-body {
+    padding: 0 18px 16px;
+  }
+}

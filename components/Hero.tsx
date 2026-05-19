@@ -5,7 +5,7 @@ const PLATFORMS = ["Netflix", "YouTube", "Disney+", "Prime Video", "Hulu", "Max"
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-20 px-6 text-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-16 px-4 sm:px-6 text-center overflow-hidden">
       {/* Background glow orbs */}
       <div className="glow-orb" style={{ width: 600, height: 600, top: -100, left: "50%", transform: "translateX(-50%)", background: "rgba(99,102,241,0.12)" }} />
       <div className="glow-orb" style={{ width: 400, height: 400, bottom: 0, right: "10%", background: "rgba(139,92,246,0.07)" }} />
@@ -15,7 +15,7 @@ export default function Hero() {
         <div className="section-label mb-8">Free Chrome Extension</div>
 
         {/* Headline */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.08] mb-6" style={{ letterSpacing: "-0.03em" }}>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6" style={{ letterSpacing: "-0.03em" }}>
           Learn any language through{" "}
           <span className="gradient-text">the shows you already love.</span>
         </h1>
@@ -52,7 +52,7 @@ export default function Hero() {
         </div>
 
         {/* Supporting line */}
-        <p className="text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>
+        <p className="text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>
           Free forever · Requires a free Groq API key · No account needed
         </p>
 

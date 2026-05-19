@@ -1,6 +1,6 @@
 export default function Story() {
   return (
-    <section className="relative py-28 px-6 overflow-hidden">
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 overflow-hidden">
       <div className="glow-orb" style={{ width: 500, height: 500, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "rgba(99,102,241,0.06)" }} />
 
       <div className="max-w-3xl mx-auto relative z-10">

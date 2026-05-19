@@ -33,7 +33,7 @@ const FAQS = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="relative py-28 px-6">
+    <section id="faq" className="relative py-16 sm:py-24 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <div className="section-label mb-5">FAQ</div>

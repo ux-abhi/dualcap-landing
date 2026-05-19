@@ -102,7 +102,7 @@ const TAG_TEXT: Record<string, string> = {
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-28 px-6">
+    <section id="features" className="relative py-16 sm:py-24 px-4 sm:px-6">
       <div className="glow-orb" style={{ width: 500, height: 500, top: "30%", left: -100, background: "rgba(99,102,241,0.07)" }} />
 
       <div className="max-w-5xl mx-auto relative z-10">

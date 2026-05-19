@@ -1,6 +1,8 @@
+import FooterSupportButton from "./FooterSupportButton";
+
 export default function Footer() {
   return (
-    <footer className="relative py-16 px-6" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+    <footer className="relative py-12 sm:py-16 px-4 sm:px-6" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between gap-10 mb-12">
           {/* Brand */}
@@ -20,7 +22,7 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex flex-col sm:flex-row gap-10">
+          <div className="grid grid-cols-2 sm:flex sm:flex-row gap-8 sm:gap-10">
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>Extension</h4>
               <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
@@ -28,6 +30,8 @@ export default function Footer() {
                 <li><a href="#how-it-works" className="hover:text-white transition-colors">How it works</a></li>
                 <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
                 <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
+                {/* Support button visible on mobile (nav support link is desktop-only) */}
+                <li className="md:hidden"><FooterSupportButton /></li>
               </ul>
             </div>
             <div>
@@ -37,7 +41,7 @@ export default function Footer() {
                 <li><a href="mailto:hello@uxabhi.com" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
             </div>
-            <div>
+            <div className="col-span-2 sm:col-span-1">
               <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>Made by</h4>
               <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
                 <li><a href="https://uxabhi.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">uxabhi.com</a></li>
