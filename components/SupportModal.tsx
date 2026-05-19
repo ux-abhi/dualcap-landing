@@ -73,8 +73,20 @@ export default function SupportModal({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      style={{ background: "rgba(0,0,0,0.72)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
+      className="fixed z-[100] p-4"
+      style={{
+        inset: 0,
+        top: 0, left: 0, right: 0, bottom: 0,
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "rgba(0,0,0,0.72)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        overflowY: "auto",
+      }}
       onClick={(e) => { if (e.target === overlayRef.current) handleClose(); }}
     >
       <div
