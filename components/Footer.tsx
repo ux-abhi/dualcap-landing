@@ -42,6 +42,16 @@ export default function Footer() {
               <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
                 <li><a href="https://uxabhi.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">uxabhi.com</a></li>
                 <li><a href="https://twitter.com/uxabhi_" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">@uxabhi_</a></li>
+                <li className="pt-1">
+                  <a
+                    href="https://buymeacoffee.com/abhishekjhx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-bmc inline-flex items-center gap-1.5"
+                  >
+                    ☕ Buy me a coffee
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
