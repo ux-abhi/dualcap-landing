@@ -31,8 +31,8 @@ export default function NetflixShowcase() {
             className="w-full h-auto block"
           />
 
-          {/* Callout chips */}
-          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
+          {/* Callout chips — hidden on mobile to avoid overlapping the screenshot */}
+          <div className="absolute bottom-4 left-4 right-4 hidden sm:flex flex-wrap gap-2">
             {[
               { label: "Grammar panel", desc: "Tense · CEFR · Word roles" },
               { label: "Side panel", desc: "All captions live" },

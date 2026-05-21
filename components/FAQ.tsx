@@ -78,7 +78,7 @@ export default function FAQ() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-12 flex items-center gap-3">
+        <div className="mt-12 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
           <span
             className="text-sm"
             style={{ color: "var(--text-faint)", fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: 12 }}

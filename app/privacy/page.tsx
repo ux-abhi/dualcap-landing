@@ -80,7 +80,7 @@ export default function PrivacyPage() {
 
           <Section title="Permissions and why we need them">
             <div
-              className="mt-2 overflow-hidden"
+              className="mt-2 overflow-x-auto"
               style={{ border: "1px solid var(--border)", borderRadius: 2 }}
             >
               <table className="w-full text-sm">

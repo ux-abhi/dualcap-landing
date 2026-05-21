@@ -71,8 +71,6 @@ export default function SupportModal({
       className="fixed z-[100] p-4"
       style={{
         inset: 0,
-        width: "100vw",
-        height: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

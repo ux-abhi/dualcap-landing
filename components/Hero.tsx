@@ -42,12 +42,12 @@ export default function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-6">
           <a
             href="https://chromewebstore.google.com/detail/mcpgmmonidbjafiaffeokmmipfimnkbn"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="btn-primary justify-center"
             style={{ fontSize: "13px", padding: "14px 28px" }}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -57,7 +57,7 @@ export default function Hero() {
             </svg>
             ADD TO CHROME — IT&apos;S FREE
           </a>
-          <a href="/#how-it-works" className="btn-ghost" style={{ fontSize: "12px" }}>
+          <a href="/#how-it-works" className="btn-ghost justify-center" style={{ fontSize: "12px" }}>
             SEE HOW IT WORKS
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -67,16 +67,20 @@ export default function Hero() {
         </div>
 
         {/* Supporting line */}
-        <p
-          className="text-xs"
+        <div
+          className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs"
           style={{
             fontFamily: "var(--font-jetbrains-mono), monospace",
             color: "var(--text-faint)",
             letterSpacing: "0.06em",
           }}
         >
-          FREE_FOREVER · REQUIRES_GROQ_API_KEY · NO_ACCOUNT
-        </p>
+          <span>FREE_FOREVER</span>
+          <span>·</span>
+          <span>REQUIRES_GROQ_API_KEY</span>
+          <span>·</span>
+          <span>NO_ACCOUNT</span>
+        </div>
 
         {/* Hero screenshot */}
         <div className="mt-14 relative mx-auto max-w-5xl">
