@@ -42,6 +42,10 @@ export const metadata: Metadata = {
     creator: "@uxabhi_",
     images: ["/screenshot-hero.png"],
   },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   keywords: [
     "language learning chrome extension",
     "bilingual subtitles",

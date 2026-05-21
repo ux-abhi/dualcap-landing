@@ -1,3 +1,4 @@
+import Image from "next/image";
 import NavClient from "./NavClient";
 
 export default function Nav() {
@@ -12,15 +13,13 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 flex-shrink-0" style={{ textDecoration: "none" }}>
-          <div
-            className="w-6 h-6 flex items-center justify-center flex-shrink-0"
-            style={{ background: "var(--accent)", borderRadius: 2 }}
-          >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <rect x="2" y="4" width="12" height="3" rx="0" fill="var(--accent-fg)" opacity="0.95" />
-              <rect x="2" y="9" width="8" height="3" rx="0" fill="var(--accent-fg)" opacity="0.6" />
-            </svg>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="DualCap"
+            width={28}
+            height={28}
+            style={{ borderRadius: 6, display: "block" }}
+          />
           <span
             className="font-bold text-sm"
             style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text)", letterSpacing: "0.02em" }}
