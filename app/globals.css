@@ -1,158 +1,206 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────
+   DESIGN TOKENS — Technical Brutalism
+   Accent: Amber (#F59E0B dark · #D97706 light)
+───────────────────────────────────────────────────── */
+
 :root {
-  --background: #06060d;
-  --foreground: #ededf5;
-  --accent: #6366f1;
-  --accent-light: #818cf8;
-  --muted: #71717a;
+  --bg:            #F5F5F0;
+  --bg-surface:    #FFFFFF;
+  --bg-raised:     #EAEAE6;
+  --border:        #C8C8C4;
+  --border-strong: #888880;
+  --text:          #1A1A18;
+  --text-muted:    #555550;
+  --text-faint:    #9A9A96;
+  --accent:        #D97706;
+  --accent-fg:     #FFFFFF;
+  --accent-hover:  #B45309;
+  --accent-bg:     rgba(217,119,6,0.07);
+  --accent-border: rgba(217,119,6,0.28);
+  --success:       #15803D;
+  --success-bg:    rgba(21,128,61,0.08);
+  --success-border:rgba(21,128,61,0.25);
+  --danger:        #DC2626;
+  --danger-bg:     rgba(220,38,38,0.08);
+  --danger-border: rgba(220,38,38,0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:            #0C0C0C;
+    --bg-surface:    #141414;
+    --bg-raised:     #1C1C1C;
+    --border:        #2A2A2A;
+    --border-strong: #525252;
+    --text:          #E8E8E2;
+    --text-muted:    #888880;
+    --text-faint:    #4A4A48;
+    --accent:        #F59E0B;
+    --accent-fg:     #0C0C0C;
+    --accent-hover:  #FBBF24;
+    --accent-bg:     rgba(245,158,11,0.08);
+    --accent-border: rgba(245,158,11,0.25);
+    --success:       #4ADE80;
+    --success-bg:    rgba(74,222,128,0.08);
+    --success-border:rgba(74,222,128,0.25);
+    --danger:        #F87171;
+    --danger-bg:     rgba(248,113,113,0.08);
+    --danger-border: rgba(248,113,113,0.25);
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+/* ── Base ─────────────────────────────────────────── */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.65;
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.35);
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-fg);
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 40%, #818cf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── Headings → monospace ─────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-jetbrains-mono), 'Courier New', monospace;
+  color: var(--text);
 }
 
-/* Glass card */
+/* ── Nav link ─────────────────────────────────────── */
+.nav-link {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0s;
+}
+.nav-link:hover { color: var(--text); }
+
+/* ── Cards ────────────────────────────────────────── */
 .card-glass {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 16px;
-  transition: background 0.2s, border-color 0.2s;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: border-color 0s;
 }
-.card-glass:hover {
-  background: rgba(255, 255, 255, 0.045);
-  border-color: rgba(99, 102, 241, 0.25);
-}
+.card-glass:hover { border-color: var(--border-strong); }
 
-/* Buttons */
+/* ── Buttons ──────────────────────────────────────── */
 .btn-primary {
-  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
-  color: white;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 12px;
-  padding: 14px 28px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  padding: 12px 24px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: all 0.2s;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 2px solid var(--accent);
   text-decoration: none;
   cursor: pointer;
-  letter-spacing: -0.01em;
+  transition: background 0s, border-color 0s;
 }
 .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 36px rgba(99, 102, 241, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
-.btn-primary:active {
-  transform: translateY(0);
-}
+.btn-primary:active { opacity: 0.8; }
 
 .btn-ghost {
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 500;
-  font-size: 14px;
-  border-radius: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  border-radius: 2px;
   padding: 11px 20px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: all 0.2s;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 8px;
+  border: 1px solid var(--border);
   text-decoration: none;
   background: transparent;
   cursor: pointer;
+  transition: border-color 0s, background 0s, color 0s;
 }
 .btn-ghost:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: var(--bg-raised);
 }
 
-/* Section label pill */
+/* ── Section Label ─── prefix via ::before ────────── */
 .section-label {
+  font-family: var(--font-jetbrains-mono), monospace;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #818cf8;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 100px;
-  padding: 4px 14px;
-  display: inline-block;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.section-label::before {
+  content: "//";
+  color: var(--text-faint);
+  font-weight: 400;
 }
 
-/* Divider */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.07), transparent);
-}
+/* ── Divider ──────────────────────────────────────── */
+.divider { height: 1px; background: var(--border); }
 
-/* Step number */
+/* ── Step number ──────────────────────────────────── */
 .step-number {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--accent-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
-  color: #818cf8;
+  color: var(--accent);
+  font-family: var(--font-jetbrains-mono), monospace;
   flex-shrink: 0;
+  border-radius: 0;
+  background: var(--accent-bg);
 }
 
-/* Platform logos row */
+/* ── Platform chip ────────────────────────────────── */
 .platform-chip {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 500;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
   white-space: nowrap;
 }
 
-/* FAQ accordion */
+/* ── FAQ accordion ────────────────────────────────── */
 details summary {
   cursor: pointer;
   list-style: none;
@@ -160,94 +208,95 @@ details summary {
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
-  padding: 20px 24px;
+  padding: 18px 20px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
 }
-details summary::-webkit-details-marker {
-  display: none;
-}
+details summary::-webkit-details-marker { display: none; }
 details summary .chevron {
-  transition: transform 0.25s ease;
   flex-shrink: 0;
-  margin-top: 2px;
-  color: rgba(255, 255, 255, 0.35);
+  margin-top: 1px;
+  color: var(--text-faint);
+  transition: transform 0s;
 }
 details[open] summary .chevron {
-  transform: rotate(180deg);
-  color: #818cf8;
+  transform: rotate(45deg);
+  color: var(--accent);
 }
-details[open] summary {
-  color: #fff;
-}
+details[open] summary { color: var(--accent); }
 details .faq-body {
-  padding: 0 24px 20px;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 15px;
+  margin: 0 20px 18px;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
   line-height: 1.7;
 }
 
-/* Glow orb */
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Buy Me a Coffee button */
+/* ── Buy Me a Coffee ──────────────────────────────── */
 .btn-bmc {
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 9px;
-  padding: 9px 14px;
-  color: #FFDD00;
-  background: rgba(255, 213, 0, 0.1);
-  border: 1px solid rgba(255, 213, 0, 0.22);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  padding: 8px 14px;
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
   text-decoration: none;
-  transition: background 0.2s, border-color 0.2s;
   white-space: nowrap;
+  transition: border-color 0s, color 0s;
 }
-.btn-bmc:hover {
-  background: rgba(255, 213, 0, 0.18);
-  border-color: rgba(255, 213, 0, 0.4);
+.btn-bmc:hover { border-color: var(--border-strong); color: var(--text); }
+
+/* ── Gradient text → accent ───────────────────────── */
+.gradient-text {
+  color: var(--accent);
+  -webkit-text-fill-color: var(--accent);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
 }
 
-/* Image placeholder */
+/* ── Cursor blink ─────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor::after {
+  content: "_";
+  color: var(--accent);
+  animation: blink 1.2s step-end infinite;
+  margin-left: 2px;
+}
+
+/* ── Glow orbs — hidden in brutalist mode ─────────── */
+.glow-orb { display: none; }
+
+/* ── Img placeholder ──────────────────────────────── */
 .img-placeholder {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1.5px dashed rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  background: var(--bg-raised);
+  border: 1px dashed var(--border);
+  border-radius: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 13px;
+  color: var(--text-faint);
+  font-size: 12px;
+  font-family: var(--font-jetbrains-mono), monospace;
 }
 
-/* ── Responsive tweaks ── */
+/* ── Responsive ───────────────────────────────────── */
 @media (max-width: 640px) {
-  .btn-primary {
-    width: 100%;
-    justify-content: center;
-  }
-  .btn-ghost {
-    width: 100%;
-    justify-content: center;
-  }
-  .section-label {
-    font-size: 10px;
-  }
-  .platform-chip {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-  /* FAQ padding tighter on mobile */
-  details summary {
-    padding: 16px 18px;
-  }
-  .faq-body {
-    padding: 0 18px 16px;
-  }
+  .btn-primary { width: 100%; justify-content: center; }
+  .btn-ghost   { width: 100%; justify-content: center; }
+  .section-label { font-size: 10px; }
+  .platform-chip { font-size: 11px; padding: 5px 10px; }
+  details summary { padding: 14px 16px; font-size: 12px; }
+  details .faq-body { margin: 0 16px 14px; }
 }

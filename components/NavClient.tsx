@@ -8,17 +8,13 @@ export default function NavClient() {
 
   return (
     <>
-      {/* Support link injected into nav — triggered from here */}
       <button
         onClick={() => setSupportOpen(true)}
-        className="text-sm transition-colors"
-        style={{ color: "rgba(255,255,255,0.5)", background: "none", border: "none", cursor: "pointer", padding: 0 }}
-        onMouseOver={e => (e.currentTarget.style.color = "#fff")}
-        onMouseOut={e => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
+        className="nav-link"
+        style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "inherit" }}
       >
-        Support
+        support
       </button>
-
       <SupportModal open={supportOpen} onClose={() => setSupportOpen(false)} />
     </>
   );

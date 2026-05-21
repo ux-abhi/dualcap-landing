@@ -9,8 +9,8 @@ export default function FooterSupportButton() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="hover:text-white transition-colors text-left"
-        style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontSize: "inherit", color: "inherit", fontFamily: "inherit" }}
+        className="nav-link text-left"
+        style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "inherit" }}
       >
         Support
       </button>

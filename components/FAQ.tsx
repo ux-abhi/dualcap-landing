@@ -33,25 +33,43 @@ const FAQS = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="relative py-16 sm:py-24 px-4 sm:px-6">
+    <section id="faq" className="relative py-16 sm:py-24 px-4 sm:px-6" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="section-label mb-5">FAQ</div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4" style={{ letterSpacing: "-0.025em" }}>
+        <div className="mb-12">
+          <div className="section-label mb-4">FAQ</div>
+          <h2 className="text-3xl sm:text-4xl font-bold" style={{ letterSpacing: "-0.025em" }}>
             Common questions
           </h2>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div
+          className="flex flex-col"
+          style={{ border: "1px solid var(--border)", borderRadius: 2 }}
+        >
           {FAQS.map((item, i) => (
             <details
               key={i}
-              className="card-glass rounded-2xl overflow-hidden group"
+              className="group"
+              style={{
+                borderBottom: i < FAQS.length - 1 ? "1px solid var(--border)" : "none",
+              }}
             >
-              <summary className="text-sm font-semibold text-white leading-snug select-none">
+              <summary className="text-sm font-bold select-none" style={{ color: "var(--text)" }}>
                 {item.q}
-                <svg className="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
+                {/* + icon that becomes × when open via CSS rotate(45deg) */}
+                <svg
+                  className="chevron"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
                 </svg>
               </summary>
               <div className="faq-body">{item.a}</div>
@@ -60,13 +78,20 @@ export default function FAQ() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-14 text-center">
-          <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.4)" }}>
-            Still have questions? Reach out directly.
-          </p>
-          <a href="mailto:hello@uxabhi.com" className="btn-ghost">
+        <div className="mt-12 flex items-center gap-3">
+          <span
+            className="text-sm"
+            style={{ color: "var(--text-faint)", fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: 12 }}
+          >
+            Still have questions?
+          </span>
+          <a
+            href="mailto:hello@uxabhi.com"
+            className="btn-ghost"
+            style={{ fontSize: 12, padding: "8px 16px" }}
+          >
             hello@uxabhi.com
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>

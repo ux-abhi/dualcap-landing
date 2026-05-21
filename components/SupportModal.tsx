@@ -19,7 +19,6 @@ export default function SupportModal({
   const overlayRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
 
-  // Focus trap + reset on open
   useEffect(() => {
     if (open) {
       setTimeout(() => firstInputRef.current?.focus(), 80);
@@ -30,11 +29,8 @@ export default function SupportModal({
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  // Close on Escape
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose]);
@@ -52,7 +48,6 @@ export default function SupportModal({
     e.preventDefault();
     setStatus("loading");
     setErrorMsg("");
-
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -76,26 +71,25 @@ export default function SupportModal({
       className="fixed z-[100] p-4"
       style={{
         inset: 0,
-        top: 0, left: 0, right: 0, bottom: 0,
         width: "100vw",
         height: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "rgba(0,0,0,0.72)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
+        background: "rgba(0,0,0,0.6)",
         overflowY: "auto",
       }}
       onClick={(e) => { if (e.target === overlayRef.current) handleClose(); }}
     >
       <div
-        className="relative w-full max-w-md rounded-2xl p-7 sm:p-8"
+        className="relative w-full max-w-md p-7 sm:p-8"
         style={{
-          background: "#0e0e1a",
-          border: "1px solid rgba(255,255,255,0.09)",
-          boxShadow: "0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04)",
-          animation: "modalIn 0.2s ease",
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border)",
+          borderTop: "2px solid var(--accent)",
+          borderRadius: 2,
+          boxShadow: "4px 4px 0 var(--border)",
+          animation: "modalIn 0.15s step-end",
         }}
         role="dialog"
         aria-modal="true"
@@ -104,29 +98,37 @@ export default function SupportModal({
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
-          style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.45)" }}
+          className="absolute top-4 right-4 w-7 h-7 flex items-center justify-center"
+          style={{
+            background: "var(--bg-raised)",
+            border: "1px solid var(--border)",
+            borderRadius: 2,
+            color: "var(--text-muted)",
+            cursor: "pointer",
+          }}
           aria-label="Close"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
 
         {/* Header */}
-        <div className="mb-7">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "linear-gradient(135deg,#6366f1,#818cf8)" }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-            </div>
-            <span className="font-semibold text-white text-sm">DualCap Support</span>
+        <div className="mb-6">
+          <div
+            className="text-xs font-bold mb-3"
+            style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--accent)", letterSpacing: "0.1em" }}
+          >
+            // DUALCAP_SUPPORT
           </div>
-          <h2 id="support-title" className="text-xl font-bold text-white tracking-tight" style={{ letterSpacing: "-0.02em" }}>
+          <h2
+            id="support-title"
+            className="text-lg font-bold mb-1"
+            style={{ letterSpacing: "-0.02em", color: "var(--text)" }}
+          >
             How can we help?
           </h2>
-          <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.42)" }}>
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>
             We&apos;ll get back to you at your email address.
           </p>
         </div>
@@ -134,24 +136,38 @@ export default function SupportModal({
         {/* Success state */}
         {status === "success" ? (
           <div className="text-center py-8 flex flex-col items-center gap-4">
-            <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.25)" }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div
+              className="w-12 h-12 flex items-center justify-center"
+              style={{ background: "var(--success-bg)", border: "1px solid var(--success-border)", borderRadius: 2 }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
             <div>
-              <p className="font-semibold text-white mb-1">Message sent!</p>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-                We&apos;ll reply to <span style={{ color: "#a5b4fc" }}>{email}</span> soon.
+              <p
+                className="font-bold text-sm mb-1"
+                style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text)" }}
+              >
+                MESSAGE_SENT
+              </p>
+              <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                We&apos;ll reply to{" "}
+                <span style={{ color: "var(--accent)", fontFamily: "var(--font-jetbrains-mono), monospace" }}>{email}</span>{" "}
+                soon.
               </p>
             </div>
-            <button onClick={handleClose} className="btn-ghost mt-2" style={{ fontSize: 13 }}>Close</button>
+            <button onClick={handleClose} className="btn-ghost" style={{ fontSize: 12, padding: "8px 16px" }}>
+              Close
+            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            {/* Name */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold" style={{ color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
+              <label
+                className="text-xs font-bold"
+                style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text-faint)", letterSpacing: "0.08em" }}
+              >
                 NAME
               </label>
               <input
@@ -165,9 +181,11 @@ export default function SupportModal({
               />
             </div>
 
-            {/* Email */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold" style={{ color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
+              <label
+                className="text-xs font-bold"
+                style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text-faint)", letterSpacing: "0.08em" }}
+              >
                 EMAIL
               </label>
               <input
@@ -180,9 +198,11 @@ export default function SupportModal({
               />
             </div>
 
-            {/* Query */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold" style={{ color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
+              <label
+                className="text-xs font-bold"
+                style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text-faint)", letterSpacing: "0.08em" }}
+              >
                 QUERY
               </label>
               <textarea
@@ -196,31 +216,38 @@ export default function SupportModal({
               />
             </div>
 
-            {/* Error */}
             {status === "error" && (
-              <p className="text-xs px-3 py-2 rounded-lg" style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.2)", color: "#fca5a5" }}>
-                {errorMsg}
+              <p
+                className="text-xs px-3 py-2"
+                style={{
+                  background: "var(--danger-bg)",
+                  border: "1px solid var(--danger-border)",
+                  borderRadius: 2,
+                  color: "var(--danger)",
+                  fontFamily: "var(--font-jetbrains-mono), monospace",
+                }}
+              >
+                ERROR: {errorMsg}
               </p>
             )}
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={status === "loading"}
               className="btn-primary w-full justify-center mt-1"
-              style={{ fontSize: 14, padding: "13px 20px", opacity: status === "loading" ? 0.7 : 1, cursor: status === "loading" ? "not-allowed" : "pointer" }}
+              style={{ fontSize: 12, padding: "12px 20px", opacity: status === "loading" ? 0.6 : 1, cursor: status === "loading" ? "not-allowed" : "pointer" }}
             >
               {status === "loading" ? (
                 <>
-                  <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="animate-spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                   </svg>
-                  Sending…
+                  SENDING…
                 </>
               ) : (
                 <>
-                  Send message
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  SEND MESSAGE
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                   </svg>
                 </>
@@ -232,23 +259,23 @@ export default function SupportModal({
 
       <style>{`
         @keyframes modalIn {
-          from { opacity: 0; transform: scale(0.96) translateY(8px); }
-          to   { opacity: 1; transform: scale(1) translateY(0); }
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
         .support-input {
           width: 100%;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.09);
-          border-radius: 10px;
-          padding: 11px 14px;
+          background: var(--bg-raised);
+          border: 1px solid var(--border);
+          border-radius: 2px;
+          padding: 10px 12px;
           font-size: 14px;
-          color: #fff;
+          color: var(--text);
           outline: none;
-          transition: border-color 0.15s;
           font-family: inherit;
+          transition: border-color 0s;
         }
-        .support-input::placeholder { color: rgba(255,255,255,0.25); }
-        .support-input:focus { border-color: rgba(99,102,241,0.6); box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+        .support-input::placeholder { color: var(--text-faint); }
+        .support-input:focus { border-color: var(--accent); }
       `}</style>
     </div>
   );

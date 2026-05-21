@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { JetBrains_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -17,6 +25,14 @@ export const metadata: Metadata = {
       "Live dual subtitles on Netflix, YouTube and more. Click any word to look it up. Click a sentence to get a full grammar breakdown. Save to your personal dictionary.",
     siteName: "DualCap",
     type: "website",
+    images: [
+      {
+        url: "/screenshot-hero.png",
+        width: 1667,
+        height: 943,
+        alt: "DualCap — Bilingual captions for language learning",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -24,6 +40,7 @@ export const metadata: Metadata = {
     description:
       "Live dual subtitles on Netflix, YouTube and more. Click any word to look it up. Click a sentence to get a full grammar breakdown.",
     creator: "@uxabhi_",
+    images: ["/screenshot-hero.png"],
   },
   keywords: [
     "language learning chrome extension",
@@ -39,11 +56,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable}`}>
+    <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col">{children}</body>
     </html>
   );

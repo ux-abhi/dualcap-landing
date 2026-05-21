@@ -1,4 +1,14 @@
-const TUTORIALS = [
+interface TutorialItem {
+  id: string;
+  title: string;
+  intro?: string;
+  steps: { n: string; text: string }[];
+  tip?: string;
+  note?: string;
+  end?: string;
+}
+
+const TUTORIALS: TutorialItem[] = [
   {
     id: "groq",
     title: "How to get your free Groq API key",
@@ -9,12 +19,11 @@ const TUTORIALS = [
       { n: "3", text: 'Copy the key — it starts with gsk_.' },
       { n: "4", text: 'Open DualCap in Chrome → click the icon in your toolbar → click "Settings" → paste your key in the API Key field → click Save.' },
     ],
-    end: "That's it. You're ready to start.",
+    end: "→ That's it. You're ready to start.",
   },
   {
     id: "youtube",
     title: "How to use DualCap on YouTube",
-    intro: "",
     steps: [
       { n: "1", text: "Open any YouTube video." },
       { n: "2", text: "Click the CC button in the video player to enable captions." },
@@ -26,7 +35,6 @@ const TUTORIALS = [
   {
     id: "netflix",
     title: "How to use DualCap on Netflix",
-    intro: "",
     steps: [
       { n: "1", text: "Open any Netflix show or movie." },
       { n: "2", text: "Click the dialogue icon in the Netflix player and choose a subtitle language." },
@@ -38,7 +46,6 @@ const TUTORIALS = [
   {
     id: "dictionary",
     title: "How to build your personal dictionary",
-    intro: "",
     steps: [
       { n: "1", text: "Watch any video with DualCap running." },
       { n: "2", text: "When a sentence appears that you want to remember — click Save to dictionary." },
@@ -51,50 +58,84 @@ const TUTORIALS = [
 
 export default function Tutorial() {
   return (
-    <section id="tutorial" className="relative py-16 sm:py-24 px-4 sm:px-6">
+    <section id="tutorial" className="relative py-16 sm:py-24 px-4 sm:px-6" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="section-label mb-5">Guides</div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4" style={{ letterSpacing: "-0.025em" }}>
+        <div className="mb-14">
+          <div className="section-label mb-4">Guides</div>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ letterSpacing: "-0.025em" }}>
             Getting started
           </h2>
-          <p className="text-lg max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.45)" }}>
+          <p className="text-base max-w-xl" style={{ color: "var(--text-muted)" }}>
             Step-by-step instructions for everything you need.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-px" style={{ border: "1px solid var(--border)", background: "var(--border)" }}>
           {TUTORIALS.map((tut) => (
-            <div key={tut.id} className="card-glass p-7 flex flex-col gap-5">
-              <h3 className="text-base font-semibold text-white leading-snug">{tut.title}</h3>
+            <div key={tut.id} className="card-glass p-6 flex flex-col gap-4" style={{ border: "none", borderRadius: 0 }}>
+              <h3
+                className="text-sm font-bold leading-snug"
+                style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text)" }}
+              >
+                {tut.title}
+              </h3>
 
               {tut.intro && (
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{tut.intro}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{tut.intro}</p>
               )}
 
-              <ol className="flex flex-col gap-3.5">
+              <ol className="flex flex-col gap-3">
                 {tut.steps.map((s, i) => (
                   <li key={i} className="flex gap-3 items-start">
-                    <span className="step-number text-sm">{s.n}</span>
-                    <span className="text-sm leading-relaxed pt-2" style={{ color: "rgba(255,255,255,0.55)" }}>{s.text}</span>
+                    <span className="step-number text-xs">{s.n}</span>
+                    <span className="text-sm leading-relaxed" style={{ color: "var(--text-muted)", paddingTop: 6 }}>{s.text}</span>
                   </li>
                 ))}
               </ol>
 
-              {(tut as { tip?: string }).tip && (
-                <div className="rounded-xl px-4 py-3 text-sm" style={{ background: "rgba(99,102,241,0.08)", border: "1px solid rgba(99,102,241,0.15)", color: "#a5b4fc" }}>
-                  <span className="font-semibold">Tip: </span>{(tut as { tip?: string }).tip}
+              {tut.tip && (
+                <div
+                  className="text-xs px-3 py-2.5"
+                  style={{
+                    background: "var(--accent-bg)",
+                    border: "1px solid var(--accent-border)",
+                    borderRadius: 2,
+                    color: "var(--accent)",
+                    fontFamily: "var(--font-jetbrains-mono), monospace",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  <span className="font-bold">TIP: </span>{tut.tip}
                 </div>
               )}
 
-              {(tut as { note?: string }).note && (
-                <div className="rounded-xl px-4 py-3 text-sm" style={{ background: "rgba(245,158,11,0.07)", border: "1px solid rgba(245,158,11,0.15)", color: "#fcd34d" }}>
-                  <span className="font-semibold">Note: </span>{(tut as { note?: string }).note}
+              {tut.note && (
+                <div
+                  className="text-xs px-3 py-2.5"
+                  style={{
+                    background: "var(--bg-raised)",
+                    border: "1px solid var(--border-strong)",
+                    borderRadius: 2,
+                    color: "var(--text-muted)",
+                    fontFamily: "var(--font-jetbrains-mono), monospace",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  <span className="font-bold" style={{ color: "var(--text)" }}>NOTE: </span>{tut.note}
                 </div>
               )}
 
-              {(tut as { end?: string }).end && (
-                <p className="text-sm font-medium" style={{ color: "#6ee7b7" }}>{(tut as { end?: string }).end}</p>
+              {tut.end && (
+                <p
+                  className="text-xs font-bold"
+                  style={{
+                    fontFamily: "var(--font-jetbrains-mono), monospace",
+                    color: "var(--success)",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  {tut.end}
+                </p>
               )}
             </div>
           ))}

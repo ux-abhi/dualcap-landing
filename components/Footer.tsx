@@ -2,21 +2,29 @@ import FooterSupportButton from "./FooterSupportButton";
 
 export default function Footer() {
   return (
-    <footer className="relative py-12 sm:py-16 px-4 sm:px-6" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+    <footer className="relative py-12 sm:py-16 px-4 sm:px-6" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between gap-10 mb-12">
+        <div className="flex flex-col md:flex-row justify-between gap-10 mb-10">
           {/* Brand */}
           <div className="max-w-xs">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "linear-gradient(135deg,#6366f1,#818cf8)" }}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <rect x="2" y="4" width="12" height="3" rx="1.5" fill="white" opacity="0.9" />
-                  <rect x="2" y="9" width="8" height="3" rx="1.5" fill="white" opacity="0.55" />
+            <div className="flex items-center gap-2 mb-4">
+              <div
+                className="w-6 h-6 flex items-center justify-center flex-shrink-0"
+                style={{ background: "var(--accent)", borderRadius: 2 }}
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <rect x="2" y="4" width="12" height="3" rx="0" fill="var(--accent-fg)" opacity="0.95" />
+                  <rect x="2" y="9" width="8" height="3" rx="0" fill="var(--accent-fg)" opacity="0.6" />
                 </svg>
               </div>
-              <span className="font-semibold text-base tracking-tight text-white">DualCap</span>
+              <span
+                className="font-bold text-sm"
+                style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text)", letterSpacing: "0.02em" }}
+              >
+                DualCap
+              </span>
             </div>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.38)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
               Learn any language through the shows you already love. Free Chrome extension.
             </p>
           </div>
@@ -24,28 +32,58 @@ export default function Footer() {
           {/* Links */}
           <div className="grid grid-cols-2 sm:flex sm:flex-row gap-8 sm:gap-10">
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>Extension</h4>
-              <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <li><a href="https://chromewebstore.google.com/detail/mcpgmmonidbjafiaffeokmmipfimnkbn" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Add to Chrome</a></li>
-                <li><a href="#how-it-works" className="hover:text-white transition-colors">How it works</a></li>
-                <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
-                {/* Support button visible on mobile (nav support link is desktop-only) */}
+              <h4
+                className="text-xs font-bold uppercase mb-4"
+                style={{
+                  fontFamily: "var(--font-jetbrains-mono), monospace",
+                  color: "var(--text-faint)",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                Extension
+              </h4>
+              <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "var(--text-muted)" }}>
+                <li>
+                  <a href="https://chromewebstore.google.com/detail/mcpgmmonidbjafiaffeokmmipfimnkbn" target="_blank" rel="noopener noreferrer" className="nav-link">
+                    Add to Chrome
+                  </a>
+                </li>
+                <li><a href="/#how-it-works" className="nav-link">How it works</a></li>
+                <li><a href="/#features" className="nav-link">Features</a></li>
+                <li><a href="/#faq" className="nav-link">FAQ</a></li>
                 <li className="md:hidden"><FooterSupportButton /></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>Legal & contact</h4>
-              <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <li><a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="mailto:hello@uxabhi.com" className="hover:text-white transition-colors">Contact</a></li>
+              <h4
+                className="text-xs font-bold uppercase mb-4"
+                style={{
+                  fontFamily: "var(--font-jetbrains-mono), monospace",
+                  color: "var(--text-faint)",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                Legal
+              </h4>
+              <ul className="flex flex-col gap-2.5">
+                <li><a href="/privacy" className="nav-link">Privacy Policy</a></li>
+                <li><a href="mailto:hello@uxabhi.com" className="nav-link">Contact</a></li>
               </ul>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>Made by</h4>
-              <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <li><a href="https://uxabhi.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">uxabhi.com</a></li>
-                <li><a href="https://twitter.com/uxabhi_" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">@uxabhi_</a></li>
+              <h4
+                className="text-xs font-bold uppercase mb-4"
+                style={{
+                  fontFamily: "var(--font-jetbrains-mono), monospace",
+                  color: "var(--text-faint)",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                Made by
+              </h4>
+              <ul className="flex flex-col gap-2.5">
+                <li><a href="https://uxabhi.com" target="_blank" rel="noopener noreferrer" className="nav-link">uxabhi.com</a></li>
+                <li><a href="https://twitter.com/uxabhi_" target="_blank" rel="noopener noreferrer" className="nav-link">@uxabhi_</a></li>
                 <li className="pt-1">
                   <a
                     href="https://buymeacoffee.com/abhishekjhx"
@@ -61,9 +99,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="divider mb-8" />
+        <div className="divider mb-6" />
 
-        <div className="flex flex-col sm:flex-row justify-between gap-4 text-xs" style={{ color: "rgba(255,255,255,0.28)" }}>
+        <div
+          className="flex flex-col sm:flex-row justify-between gap-3 text-xs"
+          style={{
+            fontFamily: "var(--font-jetbrains-mono), monospace",
+            color: "var(--text-faint)",
+            letterSpacing: "0.04em",
+          }}
+        >
           <p>DualCap is an independent project. Not affiliated with Netflix, YouTube, Google, or any streaming platform.</p>
           <p className="flex-shrink-0">© 2026 Abhishek Jha</p>
         </div>

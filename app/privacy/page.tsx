@@ -19,32 +19,45 @@ export default function PrivacyPage() {
     <main>
       <Nav />
       <article className="max-w-2xl mx-auto px-6 pt-36 pb-24">
-        <div className="mb-12">
-          <div className="section-label mb-5">Legal</div>
-          <h1 className="text-4xl font-bold tracking-tight mb-3" style={{ letterSpacing: "-0.025em" }}>Privacy Policy</h1>
-          <p className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>Last updated: May 2026</p>
+        <div className="mb-10">
+          <div className="section-label mb-4">Legal</div>
+          <h1 className="text-3xl font-bold mb-2" style={{ letterSpacing: "-0.025em" }}>Privacy Policy</h1>
+          <p
+            className="text-xs"
+            style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text-faint)", letterSpacing: "0.06em" }}
+          >
+            LAST_UPDATED: May 2026
+          </p>
         </div>
 
-        {/* Short version */}
-        <div className="card-glass rounded-xl p-6 mb-10" style={{ borderColor: "rgba(99,102,241,0.2)", background: "rgba(99,102,241,0.06)" }}>
-          <p className="text-base font-medium" style={{ color: "#a5b4fc" }}>
+        {/* Summary card */}
+        <div
+          className="p-5 mb-10"
+          style={{
+            background: "var(--accent-bg)",
+            border: "1px solid var(--accent-border)",
+            borderLeft: "3px solid var(--accent)",
+            borderRadius: 2,
+          }}
+        >
+          <p className="text-sm font-medium" style={{ color: "var(--accent)" }}>
             DualCap does not collect your data. It does not track you. It has no servers of its own. Everything stays on your device.
           </p>
         </div>
 
-        <div className="flex flex-col gap-10 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+        <div className="flex flex-col gap-10 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
           <Section title="What DualCap does">
             DualCap is a Chrome extension that reads subtitle text from video streaming sites and sends it to Groq&apos;s API to generate translations and grammar explanations. That is the full extent of its external communication.
           </Section>
 
           <Section title="Data we collect">
-            <strong className="text-white">None.</strong> DualCap does not collect, store, transmit, or sell any personal data. There are no analytics, no telemetry, no crash reports, no usage tracking of any kind.
+            <strong style={{ color: "var(--text)" }}>None.</strong> DualCap does not collect, store, transmit, or sell any personal data. There are no analytics, no telemetry, no crash reports, no usage tracking of any kind.
           </Section>
 
           <Section title="Data sent to third parties">
-            <p>The only external service DualCap communicates with is <strong className="text-white">Groq</strong> (api.groq.com).</p>
-            <p className="mt-3"><strong className="text-white">What is sent:</strong> the subtitle text currently visible on your screen — the words of the video you are watching — for the purpose of translation and grammar analysis.</p>
-            <p className="mt-3"><strong className="text-white">What is not sent:</strong> your identity, browsing history, IP address, device information, account details, or any other personal data.</p>
+            <p>The only external service DualCap communicates with is <strong style={{ color: "var(--text)" }}>Groq</strong> (api.groq.com).</p>
+            <p className="mt-3"><strong style={{ color: "var(--text)" }}>What is sent:</strong> the subtitle text currently visible on your screen — the words of the video you are watching — for the purpose of translation and grammar analysis.</p>
+            <p className="mt-3"><strong style={{ color: "var(--text)" }}>What is not sent:</strong> your identity, browsing history, IP address, device information, account details, or any other personal data.</p>
             <p className="mt-3">Groq processes this text under their own privacy policy, available at groq.com/privacy.</p>
           </Section>
 
@@ -54,10 +67,10 @@ export default function PrivacyPage() {
 
           <Section title="Data stored locally">
             <p>The following is stored on your device only, using Chrome&apos;s storage APIs:</p>
-            <ul className="mt-3 flex flex-col gap-1.5 pl-4">
+            <ul className="mt-3 flex flex-col gap-1.5 pl-2">
               {["Your Groq API key", "Language preferences (source and target language)", "Display settings (theme, font size, caption position)", "Your saved dictionary entries", "Per-site overlay position"].map((item) => (
                 <li key={item} className="flex gap-2 items-start">
-                  <span style={{ color: "#818cf8", flexShrink: 0 }}>–</span>
+                  <span style={{ color: "var(--accent)", flexShrink: 0, fontFamily: "var(--font-jetbrains-mono), monospace" }}>–</span>
                   {item}
                 </li>
               ))}
@@ -66,32 +79,40 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="Permissions and why we need them">
-            <div className="mt-2 rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)" }}>
+            <div
+              className="mt-2 overflow-hidden"
+              style={{ border: "1px solid var(--border)", borderRadius: 2 }}
+            >
               <table className="w-full text-sm">
                 <thead>
-                  <tr style={{ background: "rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-                    <th className="text-left px-4 py-3 font-semibold text-white">Permission</th>
-                    <th className="text-left px-4 py-3 font-semibold text-white">Purpose</th>
+                  <tr style={{ background: "var(--bg-raised)", borderBottom: "1px solid var(--border)" }}>
+                    <th className="text-left px-4 py-3 font-bold" style={{ color: "var(--text)" }}>Permission</th>
+                    <th className="text-left px-4 py-3 font-bold" style={{ color: "var(--text)" }}>Purpose</th>
                   </tr>
                 </thead>
                 <tbody>
                   {PERMISSIONS.map((row, i) => (
-                    <tr key={i} style={{ borderBottom: i < PERMISSIONS.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
-                      <td className="px-4 py-3 font-mono text-xs" style={{ color: "#818cf8" }}>{row.perm}</td>
-                      <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.55)" }}>{row.purpose}</td>
+                    <tr key={i} style={{ borderBottom: i < PERMISSIONS.length - 1 ? "1px solid var(--border)" : "none" }}>
+                      <td
+                        className="px-4 py-3 font-mono text-xs"
+                        style={{ color: "var(--accent)", fontFamily: "var(--font-jetbrains-mono), monospace" }}
+                      >
+                        {row.perm}
+                      </td>
+                      <td className="px-4 py-3" style={{ color: "var(--text-muted)" }}>{row.purpose}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p className="mt-3">We do not request permissions beyond what is listed above. We do not request access to your browsing history, microphone, camera, location, or any other sensitive data.</p>
+            <p className="mt-3">We do not request permissions beyond what is listed above.</p>
           </Section>
 
           <Section title="Host permissions">
             <p>DualCap only injects into the following video streaming sites:</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {["netflix.com", "youtube.com", "disneyplus.com", "primevideo.com", "amazon.com", "hulu.com", "max.com", "mubi.com", "crunchyroll.com"].map((h) => (
-                <span key={h} className="platform-chip text-xs" style={{ fontSize: 12, padding: "5px 12px" }}>{h}</span>
+                <span key={h} className="platform-chip" style={{ fontSize: 11, padding: "4px 10px" }}>{h}</span>
               ))}
             </div>
             <p className="mt-3">And communicates only with: api.groq.com</p>
@@ -109,10 +130,10 @@ export default function PrivacyPage() {
           <Section title="Contact">
             <p>If you have any questions about this privacy policy:</p>
             <div className="mt-3">
-              <p className="text-white font-medium">Abhishek Jha</p>
-              <a href="mailto:hello@uxabhi.com" className="hover:text-white transition-colors">hello@uxabhi.com</a>
+              <p className="font-medium" style={{ color: "var(--text)" }}>Abhishek Jha</p>
+              <a href="mailto:hello@uxabhi.com" style={{ color: "var(--accent)", textDecoration: "none" }}>hello@uxabhi.com</a>
               <br />
-              <a href="https://uxabhi.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">uxabhi.com</a>
+              <a href="https://uxabhi.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)", textDecoration: "none" }}>uxabhi.com</a>
             </div>
           </Section>
         </div>
@@ -125,7 +146,12 @@ export default function PrivacyPage() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h2 className="text-base font-semibold text-white mb-3">{title}</h2>
+      <h2
+        className="text-sm font-bold mb-3"
+        style={{ fontFamily: "var(--font-jetbrains-mono), monospace", color: "var(--text)", letterSpacing: "0.02em" }}
+      >
+        {title}
+      </h2>
       <div>{children}</div>
     </div>
   );

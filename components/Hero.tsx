@@ -2,49 +2,64 @@ import Image from "next/image";
 
 const PLATFORMS = ["Netflix", "YouTube", "Disney+", "Prime Video", "Hulu", "Max", "Mubi", "Crunchyroll"];
 
-
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-16 px-4 sm:px-6 text-center overflow-hidden">
-      {/* Background glow orbs */}
-      <div className="glow-orb" style={{ width: 600, height: 600, top: -100, left: "50%", transform: "translateX(-50%)", background: "rgba(99,102,241,0.12)" }} />
-      <div className="glow-orb" style={{ width: 400, height: 400, bottom: 0, right: "10%", background: "rgba(139,92,246,0.07)" }} />
+      {/* Subtle grid background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          opacity: 0.4,
+        }}
+      />
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        {/* Badge */}
-        <div className="section-label mb-8">Free Chrome Extension</div>
+        {/* Status badge */}
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <span
+            className="section-label"
+            style={{ padding: "4px 12px", border: "1px solid var(--border)", background: "var(--bg-surface)" }}
+          >
+            Free Chrome Extension
+          </span>
+        </div>
 
         {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6" style={{ letterSpacing: "-0.03em" }}>
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 cursor"
+          style={{ letterSpacing: "-0.03em" }}
+        >
           Learn any language through{" "}
           <span className="gradient-text">the shows you already love.</span>
         </h1>
 
         {/* Sub-headline */}
-        <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+        <p className="text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "var(--text-muted)" }}>
           DualCap puts live bilingual captions on Netflix, YouTube, and more — with grammar breakdowns,
           word lookup, and a personal dictionary. No app switching. Just watch and absorb.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
           <a
             href="https://chromewebstore.google.com/detail/mcpgmmonidbjafiaffeokmmipfimnkbn"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
-            style={{ fontSize: "16px", padding: "16px 32px", borderRadius: "14px" }}
+            style={{ fontSize: "13px", padding: "14px 28px" }}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
-            Add to Chrome — it&apos;s free
+            ADD TO CHROME — IT&apos;S FREE
           </a>
-          <a href="#how-it-works" className="btn-ghost">
-            See how it works
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <a href="/#how-it-works" className="btn-ghost" style={{ fontSize: "12px" }}>
+            SEE HOW IT WORKS
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
@@ -52,15 +67,27 @@ export default function Hero() {
         </div>
 
         {/* Supporting line */}
-        <p className="text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>
-          Free forever · Requires a free Groq API key · No account needed
+        <p
+          className="text-xs"
+          style={{
+            fontFamily: "var(--font-jetbrains-mono), monospace",
+            color: "var(--text-faint)",
+            letterSpacing: "0.06em",
+          }}
+        >
+          FREE_FOREVER · REQUIRES_GROQ_API_KEY · NO_ACCOUNT
         </p>
 
         {/* Hero screenshot */}
-        <div className="mt-16 relative mx-auto max-w-5xl">
-          {/* Glow behind image */}
-          <div style={{ position: "absolute", inset: "-20px 0", background: "radial-gradient(ellipse at 50% 60%, rgba(99,102,241,0.18) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
-          <div className="relative z-10 rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)" }}>
+        <div className="mt-14 relative mx-auto max-w-5xl">
+          <div
+            className="relative z-10 overflow-hidden"
+            style={{
+              border: "1px solid var(--border)",
+              borderRadius: 4,
+              boxShadow: "4px 4px 0 var(--border)",
+            }}
+          >
             <Image
               src="/screenshot-hero.png"
               alt="DualCap showing bilingual captions and grammar breakdown on a video"
@@ -71,13 +98,21 @@ export default function Hero() {
               style={{ display: "block" }}
             />
           </div>
-          {/* Glow under screenshot */}
-          <div style={{ position: "absolute", bottom: -50, left: "50%", transform: "translateX(-50%)", width: "60%", height: 80, background: "rgba(99,102,241,0.18)", filter: "blur(50px)", borderRadius: "50%", pointerEvents: "none" }} />
         </div>
 
         {/* Platform chips */}
-        <div className="mt-12 flex flex-wrap justify-center gap-2">
-          <span className="text-sm mr-2" style={{ color: "rgba(255,255,255,0.3)", lineHeight: "36px" }}>Works on</span>
+        <div className="mt-10 flex flex-wrap justify-center gap-2">
+          <span
+            className="text-xs mr-1"
+            style={{
+              fontFamily: "var(--font-jetbrains-mono), monospace",
+              color: "var(--text-faint)",
+              lineHeight: "32px",
+              letterSpacing: "0.06em",
+            }}
+          >
+            WORKS_ON
+          </span>
           {PLATFORMS.map((p) => (
             <span key={p} className="platform-chip">{p}</span>
           ))}
