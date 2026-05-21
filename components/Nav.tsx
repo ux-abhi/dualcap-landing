@@ -50,7 +50,7 @@ export default function Nav() {
             ☕ Buy me a coffee
           </a>
           <a
-            href="https://chrome.google.com/webstore"
+            href="https://chromewebstore.google.com/detail/mcpgmmonidbjafiaffeokmmipfimnkbn"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary flex-shrink-0"

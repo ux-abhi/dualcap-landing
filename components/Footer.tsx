@@ -26,7 +26,7 @@ export default function Footer() {
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>Extension</h4>
               <ul className="flex flex-col gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <li><a href="https://chrome.google.com/webstore" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Add to Chrome</a></li>
+                <li><a href="https://chromewebstore.google.com/detail/mcpgmmonidbjafiaffeokmmipfimnkbn" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Add to Chrome</a></li>
                 <li><a href="#how-it-works" className="hover:text-white transition-colors">How it works</a></li>
                 <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
                 <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
