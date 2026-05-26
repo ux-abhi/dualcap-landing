@@ -2,51 +2,48 @@
 
 import { useEffect, useState } from "react";
 
-type Theme = "light" | "dark";
-
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme | null>(null);
+  const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored === "light" || stored === "dark") {
-      setTheme(stored);
-    } else {
-      setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    }
+    const stored = localStorage.getItem("theme");
+    const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const dark = stored === "dark" || (!stored && sysDark);
+    setIsDark(dark);
+    setMounted(true);
   }, []);
 
   function toggle() {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  }
-
-  // Stable placeholder before mount to avoid layout shift
-  if (!theme) {
-    return <div style={{ width: 28, height: 28, flexShrink: 0 }} />;
+    const next = !isDark;
+    setIsDark(next);
+    document.documentElement.setAttribute("data-theme", next ? "dark" : "light");
+    localStorage.setItem("theme", next ? "dark" : "light");
   }
 
   return (
     <button
       onClick={toggle}
-      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      suppressHydrationWarning
       style={{
-        width: 28,
-        height: 28,
+        width: 30,
+        height: 30,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         background: "var(--bg-raised)",
-        border: "1px solid var(--border)",
+        border: "1px solid var(--border-strong)",
         borderRadius: 2,
         cursor: "pointer",
         color: "var(--text-muted)",
         flexShrink: 0,
+        opacity: mounted ? 1 : 0,
+        transition: "opacity 0.15s",
       }}
     >
-      {theme === "dark" ? (
+      {isDark ? (
+        /* Sun — click to go light */
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5" />
           <line x1="12" y1="1" x2="12" y2="3" />
@@ -59,6 +56,7 @@ export default function ThemeToggle() {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
       ) : (
+        /* Moon — click to go dark */
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
