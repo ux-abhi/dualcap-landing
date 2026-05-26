@@ -82,6 +82,29 @@ export default function Hero() {
           <span>NO_ACCOUNT</span>
         </div>
 
+        {/* Product Hunt badge */}
+        <div className="mt-6 flex justify-center">
+          <a
+            href="https://www.producthunt.com/products/dualcap/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-dualcap"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <picture>
+              <source
+                srcSet="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1230743&theme=dark"
+                media="(prefers-color-scheme: light)"
+              />
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1230743&theme=light"
+                alt="DualCap - Bilingual Captions &amp; Language Learning | Product Hunt"
+                width={210}
+                height={46}
+                style={{ display: "block" }}
+              />
+            </picture>
+          </a>
+        </div>
+
         {/* Hero screenshot */}
         <div className="mt-14 relative mx-auto max-w-5xl">
           <div
