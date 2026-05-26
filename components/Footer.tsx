@@ -82,7 +82,8 @@ export default function Footer() {
               </h4>
               <ul className="flex flex-col gap-2.5">
                 <li><a href="https://uxabhi.com" target="_blank" rel="noopener noreferrer" className="nav-link">uxabhi.com</a></li>
-                <li><a href="https://twitter.com/uxabhi_" target="_blank" rel="noopener noreferrer" className="nav-link">@uxabhi_</a></li>
+                <li><a href="https://www.instagram.com/uxabhi_/" target="_blank" rel="noopener noreferrer" className="nav-link">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/ux-abhi/" target="_blank" rel="noopener noreferrer" className="nav-link">LinkedIn</a></li>
                 <li className="pt-1">
                   <a
                     href="https://buymeacoffee.com/abhishekjhx"
