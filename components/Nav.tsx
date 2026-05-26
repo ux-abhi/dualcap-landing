@@ -1,5 +1,6 @@
 import Image from "next/image";
 import NavClient from "./NavClient";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {
   return (
@@ -39,6 +40,7 @@ export default function Nav() {
 
         {/* Right CTAs */}
         <div className="flex items-center gap-2 flex-shrink-0">
+          <ThemeToggle />
           <a
             href="https://buymeacoffee.com/abhishekjhx"
             target="_blank"

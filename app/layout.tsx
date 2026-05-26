@@ -62,8 +62,16 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col">{children}</body>
+    <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col">
+        {/* Runs before hydration to restore saved theme without flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
